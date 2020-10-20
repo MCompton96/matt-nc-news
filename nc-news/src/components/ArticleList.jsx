@@ -6,7 +6,7 @@ const ArticleList = (props) => {
         <main>
             {props.articles.map(article => {
                 return (
-                    <ArticleCard {...article} key={article.article_id} />
+                    <ArticleCard {...article} key={article.article_id} handleDelete={props.handleDelete} />
                 )
             })}
         </main>

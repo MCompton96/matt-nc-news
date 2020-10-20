@@ -37,3 +37,11 @@ export const patchCommentVote = (id, change) => {
 export const removeComment = (id) => {
     return API.delete(`/comments/${id}`)
 }
+
+export const removeArticle = (id) => {
+    return API.delete(`/articles/${id}`)
+}
+
+export const postComment = (objectToPost, article_id) => {
+    return API.post(`/articles/${article_id}/comments`, objectToPost)
+}

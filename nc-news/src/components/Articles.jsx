@@ -38,12 +38,20 @@ class Articles extends React.Component {
         }
     }
 
+    handleDelete = (article_id) => {
+        api
+        .removeArticle(article_id)
+        .then(() => {
+            this.fetchAllArticles();
+        })
+    }
+
     render() {
         const { articles, isLoading } = this.state;
         return (  <div>
             {isLoading ? <p>Page is Loading</p> : 
                  (
-                    <ArticleList articles={articles} />
+                    <ArticleList articles={articles} handleDelete={this.handleDelete}/>
             )        
         }
         </div>

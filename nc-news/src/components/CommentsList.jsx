@@ -1,6 +1,7 @@
 import React from 'react';
 import * as api from '../API';
 import CommentCard from './CommentCard';
+import PostComments from './PostComments';
 
 class CommentsList extends React.Component {
     state = {
@@ -26,6 +27,16 @@ class CommentsList extends React.Component {
             this.fetchCommentsByArticleID();
         })
     }
+
+    handleCommentPost = (objectToPost) => {
+        api
+        .postComment(objectToPost, this.props.article_id)
+        .then(({ data }) => {
+            this.setState(currentState => {
+                return { comments: [data.comment, ...currentState.comments]}
+            })
+        })
+    }
     
     render() {
         const { isLoading, comments } = this.state;
@@ -34,9 +45,14 @@ class CommentsList extends React.Component {
                 <h2>Comments</h2>
                 {isLoading ? <p>Page is Loading</p> : (
                     <>
+                    <PostComments handleCommentPost={this.handleCommentPost} />
                     {comments.map(comment => {
                         return (
-                            <CommentCard {...comment} key={comment.comment_id} handleDelete={this.handleDelete}/>
+                            <CommentCard 
+                            {...comment} 
+                            key={comment.comment_id} 
+                            handleDelete={this.handleDelete}
+                            />
                         )
                     })}
                     </>
