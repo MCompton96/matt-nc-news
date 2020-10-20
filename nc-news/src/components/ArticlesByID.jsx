@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import * as api from '../API';
 import CommentsList from './CommentsList';
+import Votes from './Votes';
 
 class ArticlesByID extends React.Component {
     state = {
@@ -38,6 +39,7 @@ class ArticlesByID extends React.Component {
             <main>
             <h2>{title}</h2>
             <p>{body}</p>
+            <span><Votes votes={votes} id={article_id} article={true}/></span>
             <p>
             Article was posted in&nbsp;        
             <Link to={`topics/${topic}`}>{topic}</Link>
