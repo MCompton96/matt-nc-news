@@ -1,0 +1,21 @@
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    list-style-type: none;
+    justify-content: center;
+    height: auto;
+    padding-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    background-color: #ba1f31;
+    height: 6vh;
+}
