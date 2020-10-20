@@ -18,6 +18,14 @@ class CommentsList extends React.Component {
     componentDidMount() {
         this.getAllComments()
     }
+
+    handleDelete = (id) => {
+        api
+        .removeComment(id)
+        .then(() => {
+            this.fetchCommentsByArticleID();
+        })
+    }
     
     render() {
         const { isLoading, comments } = this.state;
@@ -28,11 +36,12 @@ class CommentsList extends React.Component {
                     <>
                     {comments.map(comment => {
                         return (
-                            <CommentCard {...comment} key={comment.comment_id}/>
+                            <CommentCard {...comment} key={comment.comment_id} handleDelete={this.handleDelete}/>
                         )
                     })}
                     </>
                 )}
+
             </main>
         )
     }

@@ -33,3 +33,7 @@ export const patchCommentVote = (id, change) => {
     const vote = { inc_votes: change };
     return API.patch(`/comments/${id}`, vote)
 }
+
+export const removeComment = (id) => {
+    return API.delete(`/comments/${id}`)
+}
