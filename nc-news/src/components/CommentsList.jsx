@@ -29,6 +29,7 @@ class CommentsList extends React.Component {
                     {comments.map(comment => {
                         return (
                             <CommentCard {...comment} key={comment.comment_id}/>
+                            
                         )
                     })}
                     </>
