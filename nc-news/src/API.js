@@ -19,3 +19,7 @@ export const fetchAllArticles = (topic, author) => {
 export const fetchArticleByID = (article_id) => {
     return API.get(`/articles/${article_id}`);
 }
+
+export const fetchCommentsByArticleID = (article_id) => {
+    return API.get(`/articles/${article_id}/comments`);
+}
