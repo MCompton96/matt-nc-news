@@ -21,6 +21,12 @@ class NavBar extends React.Component {
     componentDidMount() {
         this.getAllTopics()
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.newTopic !== this.props.newTopic) {
+            this.getAllTopics()
+        }
+    }
     
     render() {
         const { topics, isLoading } = this.state;

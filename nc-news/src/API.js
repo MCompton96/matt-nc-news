@@ -45,3 +45,7 @@ export const removeArticle = (id) => {
 export const postComment = (objectToPost, article_id) => {
     return API.post(`/articles/${article_id}/comments`, objectToPost)
 }
+
+export const postArticle = (objectToPost) => {
+    return API.post('/articles', objectToPost)
+}

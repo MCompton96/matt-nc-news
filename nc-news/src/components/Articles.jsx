@@ -1,6 +1,7 @@
 import React from 'react';
 import * as api from '../API';
 import ArticleList from './ArticleList';
+import PostArticle from './PostArticle';
 
 class Articles extends React.Component {
     state = {
@@ -42,20 +43,37 @@ class Articles extends React.Component {
         api
         .removeArticle(article_id)
         .then(() => {
-            this.fetchAllArticles();
+            this.getAllArticles();
+        })
+    }
+
+    addNewTopic = () => {
+        this.getAllTopics()
+    }
+
+    postAnArticle = (objectToPost) => {
+        api
+        .postArticle(objectToPost)
+        .then(() => {
+            this.getAllArticles();
         })
     }
 
     render() {
-        const { articles, isLoading } = this.state;
+        const { articles, isLoading, topics } = this.state;
         return (  <div>
             {isLoading ? <p>Page is Loading</p> : 
                  (
-                    <ArticleList articles={articles} handleDelete={this.handleDelete}/>
-            )        
-        }
+                     <>
+                     <ArticleList articles={articles} handleDelete={this.handleDelete}/>
+                     <h2>Post a new article</h2>
+                     <PostArticle postAnArticle={this.postAnArticle} addNewTopic={this.addNewTopic} topics={topics}/>
+                    </>
+                     )        
+                    }
         </div>
         )
+
     }
 }
 

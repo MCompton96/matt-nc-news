@@ -6,21 +6,30 @@ import NavBar from './components/NavBar';
 import { Router } from '@reach/router';
 import ArticlesByID from './components/ArticlesByID';
 
+
 class App extends React.Component {
   
   state = {
     newTopic: false
   }
+
+  addANewTopicToNavBar = () => {
+    this.setState(currentState => {
+      return { newTopic: !currentState.newTopic}
+    })
+  }
   
   render() {
+    const { newTopic } = this.state;
+  
     return (
       <div className="App">
         <Header />
-        <NavBar />
+        <NavBar newTopic={newTopic}/>
         <Router primary={false}>
-        <Articles path='/'/>
-        <Articles path='/topics/:topic'/>
-        <Articles path='/author/articles'/>
+        <Articles path='/'addANewTopicToNavBar={this.addANewTopicToNavBar}/>
+        <Articles path='/topics/:topic' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
+        <Articles path='/author/articles' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
         <ArticlesByID path="/articles/:article_id"/>
         </Router>
       </div>
