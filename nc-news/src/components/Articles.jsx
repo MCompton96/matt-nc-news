@@ -11,7 +11,8 @@ class Articles extends React.Component {
         isLoading: true,
         topics: [],
         error: null, 
-        sort_by: null
+        sort_by: null,
+        page: 1
     }
 
     getAllArticles = () => {
@@ -19,7 +20,8 @@ class Articles extends React.Component {
         .fetchAllArticles(
             this.props.topic,
             this.props.author,
-            this.state.sort_by
+            this.state.sort_by,
+            this.state.page
         )
         .then(({ data }) => {
             this.setState({ articles: data.articles, isLoading: false })
@@ -46,10 +48,17 @@ class Articles extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.topic !== this.props.topic ||
-            prevState.sort_by !== this.state.sort_by) {
+            prevState.sort_by !== this.state.sort_by ||
+            prevState.page !== this.state.page) {
             this.getAllArticles();
         }
     }
+
+    changePage = (pageAdjustment) => {
+        this.setState(currentState => {
+            return { page: currentState.page + pageAdjustment};
+        });
+    };
 
     handleDelete = (article_id) => {
         api
@@ -79,7 +88,7 @@ class Articles extends React.Component {
     }
 
     render() {
-        const { articles, isLoading, topics, error } = this.state;
+        const { articles, isLoading, topics, error, page } = this.state;
         return (  <div>
 
             <SortBar handleSort={this.handleSort} />
@@ -88,6 +97,12 @@ class Articles extends React.Component {
                  (
                      <>
                      <ArticleList articles={articles} handleDelete={this.handleDelete}/>
+                     <button onClick={() => {
+                         this.changePage(-1)
+                     }}>Previous Page</button>
+                     <button onClick={() => {
+                         this.changePage(1)
+                     }}>Next Page</button>
                      <h2>Post a new article</h2>
                      <PostArticle postAnArticle={this.postAnArticle} addNewTopic={this.addNewTopic} topics={topics}/>
                     </>

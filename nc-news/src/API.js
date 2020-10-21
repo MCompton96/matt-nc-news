@@ -8,10 +8,10 @@ export const fetchAllTopics = () => {
     return API.get('/topics')
 };
 
-export const fetchAllArticles = (topic, author, sort_by) => {
+export const fetchAllArticles = (topic, author, sort_by, p) => {
     return API.get('/articles', {
         params: {
-            topic, author, sort_by
+            topic, author, sort_by, p
         }
     })
 };
