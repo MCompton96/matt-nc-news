@@ -29,6 +29,7 @@ class PostArticle extends React.Component {
         this.props.postAnArticle({ username, body, title, topic });
         this.setState({ title: '', body: '', username: 'jessjelly', topic: ''});
         this.props.addNewTopic();
+        this.props.addANewTopicToNavBar();
     }
 
     render() {

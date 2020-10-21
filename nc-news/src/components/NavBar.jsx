@@ -7,7 +7,8 @@ class NavBar extends React.Component {
     
     state = {
         topics: [],
-        isLoading: true
+        isLoading: true,
+        articles: []
     }
 
     getAllTopics = () => {
@@ -17,6 +18,14 @@ class NavBar extends React.Component {
             this.setState({ topics: data.topics, isLoading: false})
         })
     };
+
+    getAllArticles = () => {
+        api
+        .fetchAllArticles()
+        .then(({ data }) => {
+            this.setState({ articles: data.articles})
+        })
+    }
 
     componentDidMount() {
         this.getAllTopics()
@@ -29,7 +38,7 @@ class NavBar extends React.Component {
     }
     
     render() {
-        const { topics, isLoading } = this.state;
+        const { topics, isLoading, articles } = this.state;
         console.log(topics);
         return (
             <nav>

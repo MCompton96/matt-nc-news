@@ -104,7 +104,7 @@ class Articles extends React.Component {
                          this.changePage(1)
                      }}>Next Page</button>
                      <h2>Post a new article</h2>
-                     <PostArticle postAnArticle={this.postAnArticle} addNewTopic={this.addNewTopic} topics={topics}/>
+                     <PostArticle postAnArticle={this.postAnArticle} addNewTopic={this.addNewTopic} topics={topics} addANewTopicToNavBar={this.props.addANewTopicToNavBar}/>
                     </>
                      )        
                     }
