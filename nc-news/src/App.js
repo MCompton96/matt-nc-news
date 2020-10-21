@@ -30,7 +30,7 @@ class App extends React.Component {
         <Router primary={false}>
         <Articles path='/'addANewTopicToNavBar={this.addANewTopicToNavBar}/>
         <Articles path='/topics/:topic' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
-        <Articles path='/author/articles' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
+        <Articles path='/:author/articles' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
         <ArticlesByID path="/articles/:article_id"/>
         <ErrorHandle msg={'Page not found'} status={404} default/>
         </Router>

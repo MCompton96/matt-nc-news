@@ -4,6 +4,7 @@ import * as api from '../API';
 import CommentsList from './CommentsList';
 import Votes from './Votes';
 import ErrorHandle from './Errors';
+import moment from "moment";
 
 class ArticlesByID extends React.Component {
     state = {
@@ -15,6 +16,7 @@ class ArticlesByID extends React.Component {
             votes: 0,
             author: '',
             comment_count: 0,
+            created_at: ''
         },
         isLoading: true,
         error: null
@@ -36,7 +38,7 @@ class ArticlesByID extends React.Component {
     }
 
     render() {
-        const { article_id, title, body, topic, votes, author, comment_count} = this.state.articleByID;
+        const { article_id, title, body, topic, votes, author, comment_count, created_at} = this.state.articleByID;
 
         if (this.state.error) return <ErrorHandle />
         
@@ -51,6 +53,8 @@ class ArticlesByID extends React.Component {
             <p>
             Article was posted in&nbsp;        
             <Link to={`topics/${topic}`}>{topic}</Link>
+            &nbsp;on {moment(created_at).format('LLLL')}
+            &nbsp;by <Link to={`/${author}/articles`}>{author}</Link>
             </p>
             <CommentsList article_id={article_id} comment_count={comment_count}/>
             </main>
