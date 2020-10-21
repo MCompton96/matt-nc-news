@@ -9,7 +9,9 @@ const ArticleCard = (props) => {
         <Link to={`/articles/${article_id}`}>{title}</Link>
         <p>{body}</p> 
         <span><Votes votes={votes} id={article_id} article={true}/></span>
-        <p><button onClick={handleDelete}>Delete Article</button></p>       
+        <p><button onClick={() => {
+            handleDelete(article_id)
+        }}>Delete Article</button></p>       
     </div>
     )
 }
