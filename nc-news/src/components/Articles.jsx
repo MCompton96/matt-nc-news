@@ -2,12 +2,14 @@ import React from 'react';
 import * as api from '../API';
 import ArticleList from './ArticleList';
 import PostArticle from './PostArticle';
+import ErrorHandle from './Errors';
 
 class Articles extends React.Component {
     state = {
         articles: [],
         isLoading: true,
-        topics: []
+        topics: [],
+        error: null
     }
 
     getAllArticles = () => {
@@ -19,6 +21,9 @@ class Articles extends React.Component {
         .then(({ data }) => {
             this.setState({ articles: data.articles, isLoading: false })
         })
+        .catch(err => {
+            this.setState({ error: err.response, isLoading: false})
+        })
     }
 
     getAllTopics = () => {
@@ -26,6 +31,9 @@ class Articles extends React.Component {
         .fetchAllTopics()
         .then(({ data }) => {
             this.setState({ topics: data.topics })
+        })
+        .catch(err => {
+            this.setState({ error: err.response, isLoading: false})
         })
     }
 
@@ -57,11 +65,15 @@ class Articles extends React.Component {
         .then(() => {
             this.getAllArticles();
         })
+        .catch(err => {
+            this.setState({ error: err.response, isLoading: false})
+        })
     }
 
     render() {
-        const { articles, isLoading, topics } = this.state;
+        const { articles, isLoading, topics, error } = this.state;
         return (  <div>
+            {error ? <ErrorHandle msg={error.data.msg} status={error.status}/> : null}
             {isLoading ? <p>Page is Loading</p> : 
                  (
                      <>

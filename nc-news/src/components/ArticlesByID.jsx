@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import * as api from '../API';
 import CommentsList from './CommentsList';
 import Votes from './Votes';
+import ErrorHandle from './Errors';
 
 class ArticlesByID extends React.Component {
     state = {
@@ -12,9 +13,11 @@ class ArticlesByID extends React.Component {
             title: '',
             topic: '',
             votes: 0,
-            author: ''
+            author: '',
+            comment_count: 0
         },
-        isLoading: true
+        isLoading: true,
+        error: null
     }
 
     getArticle = (article_id) => {
@@ -23,6 +26,9 @@ class ArticlesByID extends React.Component {
         .then(({ data }) => {
             this.setState({ articleByID: data.article, isLoading: false})
         })
+        .catch(err => {
+            this.setState({ error: true})
+        })
     }
 
     componentDidMount() {
@@ -30,8 +36,10 @@ class ArticlesByID extends React.Component {
     }
 
     render() {
-        const { article_id, title, body, topic, votes, author} = this.state.articleByID;
+        const { article_id, title, body, topic, votes, author, comment_count} = this.state.articleByID;
 
+        if (this.state.error) return <ErrorHandle />
+        
         return (
             <>
             {this.state.isLoading ? <p>Page is Loading</p> : (
@@ -44,7 +52,7 @@ class ArticlesByID extends React.Component {
             Article was posted in&nbsp;        
             <Link to={`topics/${topic}`}>{topic}</Link>
             </p>
-            <CommentsList article_id={article_id}/>
+            <CommentsList article_id={article_id} comment_count={comment_count}/>
             </main>
                 </>
             )}

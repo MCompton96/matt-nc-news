@@ -5,6 +5,7 @@ import Header from './components/Header';
 import NavBar from './components/NavBar';
 import { Router } from '@reach/router';
 import ArticlesByID from './components/ArticlesByID';
+import ErrorHandle from './components/Errors';
 
 
 class App extends React.Component {
@@ -31,6 +32,7 @@ class App extends React.Component {
         <Articles path='/topics/:topic' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
         <Articles path='/author/articles' addANewTopicToNavBar={this.addANewTopicToNavBar}/>
         <ArticlesByID path="/articles/:article_id"/>
+        <ErrorHandle msg={'Page not found'} status={404} default/>
         </Router>
       </div>
     );
