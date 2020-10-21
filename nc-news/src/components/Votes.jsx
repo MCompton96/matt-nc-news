@@ -54,13 +54,13 @@ class Votes extends React.Component {
                         this.voteChange(this.props.id, 1);
                         this.setState({thumbUpClicked: true})
                     }
-                }}><ThumbUp /></button>
+                }}><ThumbUp style={{ fill: 'green'}}/></button>
                 <button onClick={() => {
                     if (!thumbDownClicked) {
                         this.voteChange(this.props.id, -1);
                         this.setState({thumbDownClicked: true})
                     }
-                }}><ThumbDown /></button>
+                }}><ThumbDown style={{ fill: 'red'}}/></button>
                 <span>Votes: {this.props.votes + voteChange}</span>
             </div>
         )

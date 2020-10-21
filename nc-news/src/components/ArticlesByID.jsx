@@ -14,7 +14,7 @@ class ArticlesByID extends React.Component {
             topic: '',
             votes: 0,
             author: '',
-            comment_count: 0
+            comment_count: 0,
         },
         isLoading: true,
         error: null

@@ -3,20 +3,23 @@ import * as api from '../API';
 import ArticleList from './ArticleList';
 import PostArticle from './PostArticle';
 import ErrorHandle from './Errors';
+import SortBar from './SortBar';
 
 class Articles extends React.Component {
     state = {
         articles: [],
         isLoading: true,
         topics: [],
-        error: null
+        error: null, 
+        sort_by: null
     }
 
     getAllArticles = () => {
         api
         .fetchAllArticles(
             this.props.topic,
-            this.props.author
+            this.props.author,
+            this.state.sort_by
         )
         .then(({ data }) => {
             this.setState({ articles: data.articles, isLoading: false })
@@ -42,7 +45,8 @@ class Articles extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.topic !== this.props.topic) {
+        if (prevProps.topic !== this.props.topic ||
+            prevState.sort_by !== this.state.sort_by) {
             this.getAllArticles();
         }
     }
@@ -70,9 +74,15 @@ class Articles extends React.Component {
         })
     }
 
+    handleSort = (query) => {
+        this.setState({sort_by: query, isLoading: false})
+    }
+
     render() {
         const { articles, isLoading, topics, error } = this.state;
         return (  <div>
+
+            <SortBar handleSort={this.handleSort} />
             {error ? <ErrorHandle msg={error.data.msg} status={error.status}/> : null}
             {isLoading ? <p>Page is Loading</p> : 
                  (
