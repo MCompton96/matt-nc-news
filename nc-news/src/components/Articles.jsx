@@ -96,6 +96,15 @@ class Articles extends React.Component {
             {isLoading ? <p>Page is Loading</p> : 
                  (
                      <>
+                     <div>
+                         <span><button onClick={() => {
+                         this.changePage(-1)
+                     }}>Previous Page</button></span>
+                     <span><h4>Page {page}</h4></span>
+                     <span><button onClick={() => {
+                         this.changePage(1)
+                     }}>Next Page</button></span>
+                     </div>
                      <ArticleList articles={articles} handleDelete={this.handleDelete}/>
                      <button onClick={() => {
                          this.changePage(-1)
