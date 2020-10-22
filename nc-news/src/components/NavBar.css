@@ -13,6 +13,13 @@ nav li {
 nav a {
     color: white;
     text-decoration: none;
+    font-family: 'Niconne', cursive;
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    color: goldenrod;
+    text-decoration: underline;
 }
 
 nav {
