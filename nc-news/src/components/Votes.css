@@ -1,0 +1,23 @@
+.vote-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.vote-number {
+    font-weight: 700;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.vote-button-up, .vote-button-down {
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.vote-button-up:hover {
+    background: rgb(140, 223, 140);
+}
+
+.vote-button-down:hover {
+    background: rgb(230, 133, 133);
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThumbUp, ThumbDown } from '@material-ui/icons';
 import * as api from '../API';
+import './Votes.css';
 
 class Votes extends React.Component {
     state = {
@@ -48,20 +49,20 @@ class Votes extends React.Component {
         const { thumbUpClicked, thumbDownClicked, voteChange } = this.state;
 
         return (
-            <div>
+            <div className="vote-container">
+                <span className="vote-number">Votes: {this.props.votes + voteChange}</span>
                 <button onClick={() => {
                     if (!thumbUpClicked) {
                         this.voteChange(this.props.id, 1);
                         this.setState({thumbUpClicked: true})
                     }
-                }}><ThumbUp style={{ fill: 'green'}}/></button>
+                }} className="vote-button-up"><ThumbUp style={{ fill: 'green'}}/></button>
                 <button onClick={() => {
                     if (!thumbDownClicked) {
                         this.voteChange(this.props.id, -1);
                         this.setState({thumbDownClicked: true})
                     }
-                }}><ThumbDown style={{ fill: 'red'}}/></button>
-                <span>Votes: {this.props.votes + voteChange}</span>
+                }} className="vote-button-down"><ThumbDown style={{ fill: 'red'}}/></button>
             </div>
         )
     }

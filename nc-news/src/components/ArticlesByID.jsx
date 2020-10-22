@@ -5,6 +5,7 @@ import CommentsList from './CommentsList';
 import Votes from './Votes';
 import ErrorHandle from './Errors';
 import moment from "moment";
+import './ArticlesByID.css';
 
 class ArticlesByID extends React.Component {
     state = {
@@ -46,18 +47,22 @@ class ArticlesByID extends React.Component {
             <>
             {this.state.isLoading ? <p>Page is Loading</p> : (
             <>
-            <main>
-            <h2>{title}</h2>
-            <p>{body}</p>
-            <span><Votes votes={votes} id={article_id} article={true}/></span>
-            <p>
+            <div className="article-container">
+            <main className="article">
+            <h2 className="article-title">{title}</h2>
+            <p className="article-body">{body}</p>
+            <span><Votes votes={votes} id={article_id} article={true} className="article-vote"/></span>
+            <p className="article-timestamp">
             Article was posted in&nbsp;        
             <Link to={`topics/${topic}`}>{topic}</Link>
             &nbsp;on {moment(created_at).format('LLLL')}
             &nbsp;by <Link to={`/${author}/articles`}>{author}</Link>
             </p>
-            <CommentsList article_id={article_id} comment_count={comment_count}/>
+            <span className="article-comments">
+            <CommentsList article_id={article_id} comment_count={comment_count} />
+            </span>
             </main>
+            </div>
                 </>
             )}
         </>

@@ -98,22 +98,23 @@ class Articles extends React.Component {
                  (
                      <>
                      <div className="button-container">
-                         <span><button onClick={() => {
+                        <button onClick={() => {
                          this.changePage(-1)
-                     }} className="button-pages">Previous Page</button></span>
-                     <span className="pageSpan"><h4>Page {page}</h4></span>
-                     <span><button onClick={() => {
+                     }} className="button-pages">Previous Page</button>
+                        <span className="page-span"><h4>Page {page}</h4></span>
+                        <button onClick={() => {
                          this.changePage(1)
-                     }} className="button-pages">Next Page</button></span>
+                     }} className="button-pages">Next Page</button>
                      </div>
                      <ArticleList articles={articles} handleDelete={this.handleDelete}/>
+                     <div className="bottom-button-container">
                      <button onClick={() => {
                          this.changePage(-1)
-                     }}>Previous Page</button>
+                     }} className="button-pages">Previous Page</button>
                      <button onClick={() => {
                          this.changePage(1)
-                     }}>Next Page</button>
-                     <h2>Post a new article</h2>
+                     }} className="button-pages">Next Page</button>
+                     </div>
                      <PostArticle postAnArticle={this.postAnArticle} addNewTopic={this.addNewTopic} topics={topics} addANewTopicToNavBar={this.props.addANewTopicToNavBar}/>
                     </>
                      )        

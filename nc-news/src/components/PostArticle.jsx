@@ -1,4 +1,5 @@
 import React from 'react';
+import './PostArticle.css';
 
 class PostArticle extends React.Component {
     state = {
@@ -36,14 +37,16 @@ class PostArticle extends React.Component {
         const { title, username, topic, body, newTopic } = this.state;
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="form-container">
+                <form onSubmit={this.handleSubmit} className="form">
+                <h2 className="post-article-title">Post a new article</h2>
                     <p>
                     <label>
-                        <span>Title:</span>
+                        <span className="label">Title:</span>
                         <input 
                         type="text" 
                         onChange={this.handleChange}
+                        className="input"
                         value={title}
                         name="title"
                         placeholder="Article title..."
@@ -52,8 +55,8 @@ class PostArticle extends React.Component {
                     </p>
                     <p>
                     <label >
-                        <span>Topic:</span>
-                        <select name="topic" onChange={this.handleChange} defaultValue="initial">
+                        <span className="label">Topic:</span>
+                        <select name="topic" onChange={this.handleChange} defaultValue="initial" className="input">
                             <option value="initial" disabled>Select topic or create a new one...</option>
                             {this.props.topics.map(topic => {
                                 return (
@@ -67,19 +70,19 @@ class PostArticle extends React.Component {
                     <p>
                     {newTopic && (
                         <label>
-                            <span>New Topic:</span>
-                            <input type="text" name="topic" onSelect={this.handleChange}/>
+                            <span className="label">New Topic:</span>
+                            <input type="text" name="topic" onSelect={this.handleChange} className="input"/>
                         </label>
                     )}
                     </p>
                     <p>
                     <label>
-                        <span>Article Content:</span>
-                        <textarea name="body" value={body} placeholder="Write Article here..." rows="12" onChange={this.handleChange}/>
+                        <span className="label">Article Content:</span>
+                        <textarea name="body" value={body} placeholder="Write Article here..." rows="12" onChange={this.handleChange} className="input"/>
                     </label>
                     </p>
                     <p>
-                    <button type="submit">Post Article</button>
+                    <button type="submit" className="submit-button">Post Article</button>
                     </p>
                 </form>
             </div>

@@ -1,0 +1,55 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    text-align: center;
+    width: 85%;
+    background: snow;
+    border-radius: 10px;
+    box-shadow: 3px 7px 15px black;
+    display: inline-block;
+    padding: 20px 20px;
+    border: 3px solid #ba1f31;
+    font-family: 'Merriweather', serif;
+    margin: 20px;
+}
+
+.input {
+    width: 95%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.label {
+    padding: 5px;
+    font-size: 1.3rem;
+}
+
+.post-article-title {
+    font-size: 2rem;
+    padding-bottom: 5px;
+}
+
+.title-span {
+    padding: 5px;
+    font-size: 1.3rem;
+}
+
+.submit-button {
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-family: 'Merriweather', serif;
+    border-radius: 5px;
+    border: 3px solid forestgreen;
+    color: forestgreen;
+    background: rgb(167, 238, 167);
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: forestgreen;
+    color: white;
+}
