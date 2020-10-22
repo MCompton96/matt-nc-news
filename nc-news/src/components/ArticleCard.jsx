@@ -16,7 +16,7 @@ const ArticleCard = (props) => {
         <span><Votes votes={votes} id={article_id} article={true} className="votes"/></span>
         <p class="delete-container"><button onClick={() => {
             handleDelete(article_id)
-        }}>Delete Article</button></p>       
+        }} className="delete-button">Delete Article</button></p>       
     </div>
     )
 }

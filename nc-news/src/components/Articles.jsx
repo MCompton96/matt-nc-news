@@ -4,6 +4,7 @@ import ArticleList from './ArticleList';
 import PostArticle from './PostArticle';
 import ErrorHandle from './Errors';
 import SortBar from './SortBar';
+import './Articles.css';
 
 class Articles extends React.Component {
     state = {
@@ -96,14 +97,14 @@ class Articles extends React.Component {
             {isLoading ? <p>Page is Loading</p> : 
                  (
                      <>
-                     <div>
+                     <div className="button-container">
                          <span><button onClick={() => {
                          this.changePage(-1)
-                     }}>Previous Page</button></span>
-                     <span><h4>Page {page}</h4></span>
+                     }} className="button-pages">Previous Page</button></span>
+                     <span className="pageSpan"><h4>Page {page}</h4></span>
                      <span><button onClick={() => {
                          this.changePage(1)
-                     }}>Next Page</button></span>
+                     }} className="button-pages">Next Page</button></span>
                      </div>
                      <ArticleList articles={articles} handleDelete={this.handleDelete}/>
                      <button onClick={() => {

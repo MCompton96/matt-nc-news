@@ -1,0 +1,30 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: space-between;
+    font-family: 'Merriweather', serif;
+}
+
+.button-pages {
+    padding: 10px 10px;
+    margin: 10px 150px;
+    border: 3px solid black;
+    background: aqua;
+    border-radius: 20px;
+    font-family: 'Merriweather', serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.button-pages:hover {
+    color: white;
+    background: rgb(12, 12, 122);
+}
+
+.pageSpan {
+    margin: 20px;
+}
+
+.pageSpan h4 {
+    font-size: 1.5rem;
+}

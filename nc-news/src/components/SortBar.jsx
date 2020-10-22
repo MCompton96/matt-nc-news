@@ -1,4 +1,5 @@
 import React from 'react';
+import './SortBar.css';
 
 class SortBar extends React.Component {
     
@@ -15,14 +16,14 @@ class SortBar extends React.Component {
     
     render() {
         return (
-            <main>
-                <button value="comment_count" onClick={this.handleClick}>
+            <main className="sort-bar">
+                <button value="comment_count" onClick={this.handleClick} className="button">
                     Hottest
                 </button>
-                <button value="created_at" onClick={this.handleClick}>
+                <button value="created_at" onClick={this.handleClick} className="button">
                     Newest
                 </button>
-                <button value="votes" onClick={this.handleClick}>
+                <button value="votes" onClick={this.handleClick} className="button">
                     Most Popular
                 </button>
             </main>
