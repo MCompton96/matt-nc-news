@@ -24,7 +24,7 @@ class CommentsList extends React.Component {
         api
         .removeComment(id)
         .then(() => {
-            this.fetchCommentsByArticleID();
+            this.getAllComments();
         })
     }
 
