@@ -38,7 +38,7 @@ class NavBar extends React.Component {
     }
     
     render() {
-        const { topics, isLoading, articles } = this.state;
+        const { topics, isLoading } = this.state;
         console.log(topics);
         return (
             <nav>

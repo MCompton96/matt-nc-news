@@ -7,7 +7,8 @@ class PostArticle extends React.Component {
         username: 'jessjelly',
         topic: '',
         body: '',
-        newTopic: false
+        newTopic: false,
+        noContent: false
     }
 
     handleChange = (event) => {
@@ -27,14 +28,18 @@ class PostArticle extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const {username, title, body, topic } = this.state;
-        this.props.postAnArticle({ username, body, title, topic });
-        this.setState({ title: '', body: '', username: 'jessjelly', topic: ''});
-        this.props.addNewTopic();
-        this.props.addANewTopicToNavBar();
+        if (!title || !body) {
+            this.setState({noContent: true})
+        } else {
+            this.props.postAnArticle({ username, body, title, topic });
+            this.setState({ title: '', body: '', username: 'jessjelly', topic: '', noContent: false});
+            this.props.addNewTopic();
+            this.props.addANewTopicToNavBar();
+        }
     }
 
     render() {
-        const { title, username, topic, body, newTopic } = this.state;
+        const { title, body, newTopic, noContent } = this.state;
 
         return (
             <div className="form-container">
@@ -83,6 +88,7 @@ class PostArticle extends React.Component {
                     </p>
                     <p>
                     <button type="submit" className="submit-button">Post Article</button>
+                    <p>{noContent ? <h2 className="article-error-message">Cannot submit article without content</h2> : null}</p>
                     </p>
                 </form>
             </div>

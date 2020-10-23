@@ -1,0 +1,35 @@
+.comment-container {
+    margin-bottom: 20px;
+    border: 3px solid #ba1f31;
+    border-radius: 10px;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 5.5fr 0.5fr;
+    grid-template-areas: 
+    "main vote"
+    "delete vote";
+    padding: 10px
+}
+
+.comment-body {
+    grid-area: main;
+    margin-top: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+.comment-votes {
+    grid-area: vote;
+    margin-right: 10px;
+}
+
+.comment-delete {
+    grid-area: delete;
+}
+
+.comment-timestamp {
+    font-size: 0.8rem;
+    padding-top: 5px;
+}

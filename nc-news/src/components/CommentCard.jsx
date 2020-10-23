@@ -3,16 +3,21 @@ import Votes from './Votes';
 import moment from 'moment';
 import { Link } from '@reach/router';
 import DeleteComment from './DeleteComment';
+import './CommentCard.css';
 
 const CommentCard = (props) => {
     const { author, body, votes, comment_id, handleDelete, created_at} = props;
     return (
+    <main className="comment-container">
     <>
-    <p>Posted by <Link to={`/${author}/articles`}>{author}</Link> on {moment(created_at).format('LLLL')}</p>
-    <p>{body}</p>
-    <Votes votes={votes} id={comment_id} comment={true}/>
-    <p><DeleteComment handleDelete={handleDelete} comment_id={comment_id} /></p>
+    <p className="comment-timestamp">Posted by <Link to={`/${author}/articles`}>{author}</Link> on {moment(created_at).format('LLLL')}</p>
+    <span className="content-container">
+    <p className="comment-body">{body}</p>
+    <Votes votes={votes} id={comment_id} comment={true} className="comment-votes"/>
+    </span>
+    <p><DeleteComment handleDelete={handleDelete} comment_id={comment_id} className="comment-delete"/></p>
     </>
+    </main>
     )
 }
 

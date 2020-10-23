@@ -5,7 +5,7 @@ import moment from 'moment';
 import './ArticleCard.css';
 
 const ArticleCard = (props) => {
-    const { article_id, title, body, topic, author, created_at, votes, handleDelete } = props;
+    const { article_id, title, body, author, created_at, votes, handleDelete } = props;
     return (
     <div className="article-cards">
         <span className="container">

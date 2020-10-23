@@ -1,0 +1,16 @@
+.comment-delete-button {
+    border: 3px solid white;
+    border-radius: 10px;
+    color: white;
+    background: red;
+    padding: 3px;
+    margin-bottom: 25px;
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 0.6rem;
+    cursor: pointer;
+}
+
+.comment-delete-button:hover {
+    background: rgb(121, 17, 17);
+}
