@@ -65,7 +65,7 @@ class PostArticle extends React.Component {
                             <option value="initial" disabled>Select topic or create a new one...</option>
                             {this.props.topics.map(topic => {
                                 return (
-                                <option key={topic.slug}>{topic.slug}</option>
+                                <option key={topic.slug} name={topic.slug} value={topic.slug}>{topic.slug}</option>
                                 )
                             })}
                             <option value="newTopic">Create new topic</option>

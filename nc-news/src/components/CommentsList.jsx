@@ -40,10 +40,9 @@ class CommentsList extends React.Component {
     
     render() {
         const { isLoading, comments } = this.state;
-        const { comment_count } = this.props;
         return (
             <main>
-                <h2>Comments ({comment_count})</h2>
+                <h2>Comments ({comments.length})</h2>
                 {isLoading ? <p>Page is Loading</p> : (
                     <>
                     <PostComments handleCommentPost={this.handleCommentPost} />

@@ -45,6 +45,7 @@ class Articles extends React.Component {
 
     componentDidMount() {
         this.getAllArticles();
+        this.getAllTopics();
     }
 
     componentDidUpdate(prevProps, prevState) {
